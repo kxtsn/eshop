@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Shopping Cart Web
+Technical Assessment part 2, an ecommerce website with data from `fakestoreapi.com`.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+- [Assessment Requirements](#assessment-requirements)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Technical Decisions and Assumptions](#technical-decisions-and-assumptions)
 
-## Available Scripts
+## Assessment Requirements
+- A ​main page​ that show multiple products done
+- When product page is clicked, it will go to a separate product ​detail page​ done
+- Product ​detail page​ will have add to cart done
+- When "​Add to cart button​" is clicked, it will update the cart icon to have number of the product in the cart done
+- A ​cart page​ will list the products which are added to the cart done
+- Cart page will calculate the total amount needed to be paid done
+- Cart will allow the change of quantity and removal of products done
+- Please use ReactJs for this assignment
+- Please use https://fakestoreapi.com for retrieval of products
 
-In the project directory, you can run:
+## Getting Started
+In this project, the source codes can be found under `/src` with the following folders.
+- components
+- pages
+- _ _test_ _ (fail test, yet to figure out how jest works)
 
-### `npm start`
+### Project Set Up
+Follow these steps to set up and run the project on your local machine.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Clone the project**:
+   `git clone https://github.com/kxtsn/eshop.git`
+2. **Install Dependencies for Flutter**:
+   `npm install`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
+ - Run React Web:
+   `npm start`
 
-### `npm test`
+ - Run Test:
+   `npm test`
+     
+## Technical Decisions and Assumptions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- State Management with React Context:
+Decision: The application uses React Context to manage the state of the shopping cart.
+Reasoning: React Context provides a way to pass data through the component tree without having to pass props down manually at every level. It is a suitable choice for managing global state like a shopping cart in this case.
 
-### `npm run build`
+- Use of useRef for Persistent Data:
+Decision: useRef is used to create a reference to the cart items (itemsRef).
+Reasoning: useRef is chosen to create a mutable object that persists across renders. It is particularly useful for scenarios where you need to keep track of data that should not trigger re-renders when it changes, such as with localStorage synchronization.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- LocalStorage for Cart Persistence:
+Decision: The cart items are stored and retrieved from localStorage.
+Reasoning: Using localStorage allows the application to persist cart data even when the page is refreshed or closed. It provides a way to store data locally on the user's device.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Callbacks for Modifying Cart Items:
+Decision: Callback functions (addItem and removeItem) are used to modify cart items.
+Reasoning: Using callbacks ensures that the state modifications are memoized with useCallback, optimizing performance by avoiding unnecessary re-creations of callback functions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  
